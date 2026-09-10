@@ -1,0 +1,47 @@
+name: Update Vercel Trigger
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main-archived
+    paths-ignore:
+      - 'vercel_trigger.txt'
+      - './github/workflows/deploy-prod.yaml'
+jobs:
+  update-trigger:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout with PAT
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.CI_PAT }}
+
+      - name: Configure CI Bot Identity
+        run: |
+          git config user.name "ci-bot"
+          git config user.email "$CI_BOT"
+        env:
+          CI_BOT: ${{ secrets.CI_BOT }}
+
+      - name: Update vercel_trigger.txt with latest commit hash
+        run: |
+          echo "${GITHUB_SHA}" > vercel_trigger.txt
+          echo "Updated vercel_trigger.txt with SHA: ${GITHUB_SHA}"
+
+      - name: Commit Changes
+        run: |
+          git add vercel_trigger.txt
+          
+          # If no changes, exit gracefully
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "ci: update vercel trigger with commit ${GITHUB_SHA}"
+
+      - name: Push Changes
+        run: |
+          git push origin HEAD:${GITHUB_REF#refs/heads/}
