@@ -1,0 +1,98 @@
+:root {
+  /* Skinhappy-inspired tokens (non-tailwind version) */
+  --bg: #fbfaf6;
+  --fg: #1f2a2e;
+  --card: #ffffff;
+  --muted: #eef0ee;
+  --muted-fg: #66757c;
+  --primary: #0d9688;
+  --primary-fg: #ffffff;
+  --border: #e5e0d6;
+  --danger: #ef4444;
+  --radius: 16px;
+  --shadow-soft: 0px 4px 20px -4px rgba(31, 41, 46, 0.08);
+  --shadow-card: 0px 8px 32px -8px rgba(31, 41, 46, 0.10);
+
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color-scheme: light;
+  color: var(--fg);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+}
+
+#root {
+  width: 100%;
+  min-height: 100svh;
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+  padding: 4px 8px;
+  background: rgba(13, 150, 136, 0.06);
+  border-radius: 10px;
+  border: 1px solid rgba(13, 150, 136, 0.14);
+}
+
+/* Reusable UI classes */
+.sh-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+
+.sh-btn {
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-weight: 800;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--fg);
+  cursor: pointer;
+}
+
+.sh-btnPrimary {
+  border: 1px solid var(--primary);
+  background: var(--primary);
+  color: var(--primary-fg);
+}
+
+.sh-btn:disabled,
+.sh-btnPrimary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.sh-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.sh-badgeInStock {
+  background: rgba(13, 150, 136, 0.10);
+  color: var(--primary);
+}
+
+.sh-badgeOut {
+  background: rgba(239, 68, 68, 0.10);
+  color: var(--danger);
+}

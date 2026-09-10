@@ -1,0 +1,243 @@
+.sh-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.sh-pageTitle {
+  margin: 0;
+  font-size: 22px;
+  color: var(--fg);
+  letter-spacing: -0.01em;
+  font-weight: 950;
+}
+
+.sh-subtitle {
+  margin-top: 8px;
+  color: var(--muted-fg);
+  font-size: 14px;
+}
+
+.sh-header {
+  margin-bottom: 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.sh-headerMain {
+  flex: 1 1 320px;
+}
+
+.sh-headerRight {
+  flex: 1 1 320px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Title + menu on same row */
+.sh-titleRow {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sh-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.sh-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: block;
+  flex: 0 0 auto;
+}
+
+.sh-titleLink {
+  color: var(--fg);
+  text-decoration: none;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sh-menu {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.sh-menuLink {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 900;
+  padding: 8px 10px;
+}
+
+.sh-menuIcon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
+
+.sh-avatarWrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.sh-avatarBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid rgba(31, 41, 46, 0.12);
+  background: rgba(13, 150, 136, 0.10);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  color: var(--fg);
+  box-shadow: var(--shadow-soft);
+}
+
+.sh-dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  min-width: 220px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow-card);
+  padding: 10px;
+  z-index: 50;
+}
+
+.sh-dropdownItem {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--fg);
+  text-decoration: none;
+  padding: 10px 10px;
+  border-radius: 12px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.sh-dropdownItem:hover {
+  background: rgba(13, 150, 136, 0.08);
+  border-color: rgba(13, 150, 136, 0.18);
+}
+
+.sh-gridProducts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (min-width: 720px) {
+  .sh-gridProducts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 980px) {
+  .sh-gridProducts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.sh-productImage {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  background: rgba(13, 150, 136, 0.04);
+  overflow: hidden;
+  border: 1px solid rgba(31, 41, 46, 0.08);
+}
+
+.sh-productImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 300ms ease;
+}
+
+.sh-productImage:hover img {
+  transform: scale(1.06);
+}
+
+.sh-cardPad {
+  padding: 12px;
+}
+
+.sh-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+}
+
+.sh-actions3 {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+}
+
+.sh-actions3 > * {
+  flex: 1;
+}
+
+.sh-actionsCompact {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.sh-actionsCompact .sh-actionsBuy {
+  grid-column: 1 / -1;
+}
+
+.sh-pagination {
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.sh-twoCol {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 980px) {
+  .sh-twoCol {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+.sh-qtyBtn {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border-radius: 12px;
+}
