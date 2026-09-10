@@ -1,0 +1,67 @@
+[
+  {
+    "serialNumber": 1,
+    "name": "Healing Resonance #001",
+    "imageUrl": "https://placehold.co/600x600/cba258/1f292e?text=Bowl+%23001",
+    "description": "Hand-hammered seven-metal singing bowl, tuned to a calm low tone. Carries the resonant signature of the Patan workshop. One of 101 in the Omorenda collection.",
+    "weightGrams": 850,
+    "heightMm": 95,
+    "widthMm": 180,
+    "note": "A3",
+    "frequency": "220.0",
+    "price": 249.00,
+    "currency": "USD"
+  },
+  {
+    "serialNumber": 2,
+    "name": "Healing Resonance #002",
+    "imageUrl": "https://placehold.co/600x600/d4a373/1f292e?text=Bowl+%23002",
+    "description": "Medium-sized bowl with a bright, sustained tone. Ideal for sound meditation.",
+    "weightGrams": 720,
+    "heightMm": 88,
+    "widthMm": 165,
+    "note": "C4",
+    "frequency": "261.63",
+    "price": 219.00,
+    "currency": "USD"
+  },
+  {
+    "serialNumber": 3,
+    "name": "Healing Resonance #003",
+    "imageUrl": "https://placehold.co/600x600/b08968/1f292e?text=Bowl+%23003",
+    "description": "Compact bowl, warm earthy timbre.",
+    "weightGrams": 540,
+    "heightMm": 72,
+    "widthMm": 140,
+    "note": "E4",
+    "frequency": "329.63",
+    "price": 189.00,
+    "currency": "USD"
+  },
+  {
+    "serialNumber": 4,
+    "name": "Healing Resonance #004",
+    "imageUrl": "https://placehold.co/600x600/8a6d3b/1f292e?text=Bowl+%23004",
+    "description": "Large ceremonial bowl with deep, resonant sustain.",
+    "weightGrams": 1240,
+    "heightMm": 115,
+    "widthMm": 220,
+    "note": "G3",
+    "frequency": "196.0",
+    "price": 329.00,
+    "currency": "USD"
+  },
+  {
+    "serialNumber": 5,
+    "name": "Healing Resonance #005",
+    "imageUrl": "https://placehold.co/600x600/a47551/1f292e?text=Bowl+%23005",
+    "description": "Mid-range bowl with crystalline upper harmonics.",
+    "weightGrams": 680,
+    "heightMm": 85,
+    "widthMm": 160,
+    "note": "F#4",
+    "frequency": "369.99",
+    "price": 209.00,
+    "currency": "USD"
+  }
+]
