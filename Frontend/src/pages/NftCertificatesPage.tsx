@@ -1,8 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { SiteHeader } from "../components/SiteHeader";
+import { StoreHeader } from "../components/StoreHeader";
+import { StoreFooter } from "../components/StoreFooter";
 import { useAuth } from "../auth/AuthContext";
 import { listMyNfts, type NftCertificate } from "../api/bowls";
+
+function NftShell({ children, subtitle }: { children: ReactNode; subtitle?: string }) {
+  return (
+    <div className="om-page">
+      <StoreHeader announce="Wild-harvested Himalayan botanicals — shipped worldwide." />
+      <main className="om-main">
+        <div className="om-shell om-pagehead">
+          <h1>NFT certificates</h1>
+          {subtitle ? <p>{subtitle}</p> : null}
+        </div>
+        <div className="om-shell om-block">{children}</div>
+      </main>
+      <StoreFooter />
+    </div>
+  );
+}
 
 const STATUS_COPY: Record<NftCertificate["status"], string> = {
   PENDING: "Preparing your certificate…",
@@ -42,37 +59,30 @@ export function NftCertificatesPage() {
 
   if (authLoading) {
     return (
-      <div className="sh-container">
-        <SiteHeader pageTitle="NFT certificates" />
-        <p style={{ color: "#666" }}>Loading…</p>
-      </div>
+      <NftShell>
+        <p className="om-state">Loading…</p>
+      </NftShell>
     );
   }
 
   if (!isAuthenticated) {
     return (
-      <div className="sh-container">
-        <SiteHeader pageTitle="NFT certificates" />
+      <NftShell>
         <div className="sh-card" style={{ padding: 16 }}>
           <p style={{ margin: 0 }}>
             Please <Link to="/login">sign in</Link> to view your digital certificates.
           </p>
         </div>
-      </div>
+      </NftShell>
     );
   }
 
   return (
-    <div className="sh-container">
-      <SiteHeader
-        pageTitle="NFT certificates"
-        subtitle="Digital certificates of authenticity for the bowls you own."
-      />
-
+    <NftShell subtitle="Digital certificates of authenticity for the bowls you own.">
       {loading ? (
-        <p style={{ color: "#666" }}>Loading…</p>
+        <p className="om-state">Loading…</p>
       ) : error ? (
-        <p style={{ color: "crimson" }}>{error}</p>
+        <p className="om-error">{error}</p>
       ) : nfts.length === 0 ? (
         <div className="sh-card" style={{ padding: 16 }}>
           <p style={{ margin: 0 }}>
@@ -151,6 +161,6 @@ export function NftCertificatesPage() {
           ))}
         </div>
       )}
-    </div>
+    </NftShell>
   );
 }
