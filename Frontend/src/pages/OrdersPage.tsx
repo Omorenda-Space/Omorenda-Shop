@@ -2,7 +2,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { listOrders, type Order } from "../api/orders";
-import { SiteHeader } from "../components/SiteHeader";
+import { StoreHeader } from "../components/StoreHeader";
+import { StoreFooter } from "../components/StoreFooter";
 import { useAuth } from "../auth/AuthContext";
 import { AuthGate } from "../components/AuthGate";
 
@@ -80,35 +81,35 @@ export function OrdersPage() {
   }, [isAuthenticated]);
 
   return (
-    <div className="sh-container">
-      <SiteHeader
-        pageTitle="Your orders"
-        left={
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
-            <Link to="/" style={{ color: "var(--fg)", textDecoration: "none", fontWeight: 900 }}>
-              ← Back to shop
+    <div className="om-page">
+      <StoreHeader announce="Wild-harvested Himalayan botanicals — shipped worldwide." />
+      <main className="om-main">
+        <div className="om-shell om-pagehead">
+          <div className="om-pagehead-top">
+            <Link to="/shop" className="om-continue">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5" /><path d="m11 6-6 6 6 6" /></svg>
+              Back to shop
             </Link>
-            {isAuthenticated ? (
-              <span style={{ fontSize: 12, color: "var(--muted-fg)", fontWeight: 900 }}>{user?.email}</span>
-            ) : null}
+            {isAuthenticated ? <span className="om-pagehead-email">{user?.email}</span> : null}
           </div>
-        }
-      />
-
-      {!authLoading && !isAuthenticated ? (
-        <div style={{ marginBottom: 12 }}>
-          <AuthGate title="Sign in to view orders" subtitle="Continue with Google to see your order history." />
+          <h1>Your orders</h1>
         </div>
-      ) : null}
 
-      {loading ? <p style={{ color: "#666" }}>Loading…</p> : null}
-      {error ? <p style={{ color: "crimson" }}>{error}</p> : null}
+        <div className="om-shell om-block">
+          {!authLoading && !isAuthenticated ? (
+            <div style={{ marginBottom: 12, maxWidth: 460 }}>
+              <AuthGate title="Sign in to view orders" subtitle="Continue with Google to see your order history." />
+            </div>
+          ) : null}
 
-      {!loading && !error && orders.length === 0 ? (
-        <p style={{ color: "var(--muted-fg)", fontWeight: 800 }}>No orders found.</p>
-      ) : null}
+          {loading ? <p className="om-state">Loading…</p> : null}
+          {error ? <p className="om-error">{error}</p> : null}
 
-      <div style={{ display: "grid", gap: 12 }}>
+          {!loading && !error && orders.length === 0 && isAuthenticated ? (
+            <p style={{ color: "var(--om-muted)", fontWeight: 600 }}>No orders found.</p>
+          ) : null}
+
+          <div style={{ display: "grid", gap: 12 }}>
         {orders.map((o) => (
           <article key={o.id} className="sh-card" style={{ padding: 14 }}>
             <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
@@ -172,7 +173,7 @@ export function OrdersPage() {
                           {it.title ?? variantMeta[it.shopifyVariantGid]?.productTitle ?? it.shopifyVariantGid}
                         </div>
                         <div style={{ color: "var(--muted-fg)", fontSize: 12 }}>
-                          Qty {it.quantity} · Unit {formatMoney(it.unitPrice, o.currency)} · Variant <code>{it.shopifyVariantGid}</code>
+                          Qty {it.quantity} · Unit {formatMoney(it.unitPrice, o.currency)}
                         </div>
                       </div>
                     </div>
@@ -189,7 +190,10 @@ export function OrdersPage() {
             </div>
           </article>
         ))}
-      </div>
+          </div>
+        </div>
+      </main>
+      <StoreFooter />
     </div>
   );
 }

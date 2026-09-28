@@ -70,7 +70,7 @@ export function PastPurchases({ email }: { email: string }) {
                 {item.title ?? "Purchased item"}
               </div>
               <div style={{ marginTop: 6, fontSize: 12, color: "var(--muted-fg)", fontWeight: 700 }}>
-                Qty {item.quantity} · <code>{variantGid}</code>
+                Qty {item.quantity}
               </div>
               <div style={{ marginTop: 10, display: "flex", gap: 10 }}>
                 <button
